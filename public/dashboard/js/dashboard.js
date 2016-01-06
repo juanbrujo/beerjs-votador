@@ -1,51 +1,32 @@
 $( function() {
   localStorage.debug = 'socket.io-client:socket';
 
-function toArray(obj) {
-  var array = [];
-  for (var i = obj.length >>> 0; i--;) { 
-    array[i] = obj[i];
+  function toArray(obj) {
+    var array = [];
+    for (var i = obj.length >>> 0; i--;) { 
+      array[i] = obj[i];
+    }
+    return array;
   }
-  return array;
-}
 
   var visitors = $('#visitors').epoch( {
     type: 'time.area', axes: ['left', 'bottom', 'right'],
     data: [ { values: [ { time: Date.now()/1000, y: 0 } ] } ]
-  } );
-
-  // var pieData = [
-  //   { label: 'Opcion 1', value: 0 },
-  //   { label: 'Opcion 2', value: 0 },
-  //   { label: 'Opcion 3', value: 0 }
-  // ]
+  });
   var pieData = [
       { label: 'Opcion 1', value: 1 },
       { label: 'Opcion 2', value: 1 },
       { label: 'Opcion 3', value: 1 }
   ];
-
   var conteo = $('#conteoVotos');
-
   var pages = $( '#pages' ).epoch( { type: 'bar' } );
-  // var touch = $( '#touch' ).epoch( { type: 'time.gauge' } );
-  // var video = $( '#video' ).epoch( { type: 'time.gauge' } );
   var votos = $( '#votos' ).epoch( { type: 'pie' } );
 
-  var dashboard = io( 'localhost:3000/dashboard' );
+  //var dashboard = io( 'localhost:3000/dashboard' );
+  var dashboard = io.connect(window.location.hostname + '/dashboard');
+
   dashboard.on( 'stats-updated', function( update ) {
 
-    // Convert to percentages
-    // touch.update( ( update.touch / update.connections ) || 0 );
-    // video.update( ( update.video / update.connections ) || 0 );
-
-    //var pieData = [];
-    // for( var voto in update.votos ) {
-    //   console.log('AA')
-    //   pieData.push( { label: voto, value: update.votos[voto] } );
-    // }
-    // console.log( update )
-    // votos.update( pieData );
     pieData = [
       { label: 'Opcion 1', value: update.opcion1 },
       { label: 'Opcion 2', value: update.opcion2 },
