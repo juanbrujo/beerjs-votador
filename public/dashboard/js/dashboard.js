@@ -22,8 +22,8 @@ $( function() {
   var pages = $( '#pages' ).epoch( { type: 'bar' } );
   var votos = $( '#votos' ).epoch( { type: 'pie' } );
 
-  //var dashboard = io( 'localhost:3000/dashboard' );
-  var dashboard = io.connect(window.location.hostname + '/dashboard');
+  var dashboard = io( 'localhost:3000/dashboard' );
+  //var dashboard = io.connect(window.location.hostname);
 
   dashboard.on( 'stats-updated', function( update ) {
 
@@ -38,9 +38,9 @@ $( function() {
 
     var conteoVotos = [];
     for (var i = pieData.length >>> 0; i--;) { 
-       conteoVotos[i] = pieData[i].label + ": " + pieData[i].value + " | ";
-   }
-   conteo.html( conteoVotos );
+      conteoVotos[i] = pieData[i].label + ": " + pieData[i].value + " | ";
+    }
+    conteo.html( conteoVotos );
 
     var pagesData = [];
     for( var url in update.pages ) {

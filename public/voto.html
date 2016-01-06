@@ -28,7 +28,7 @@
             </header>
             <section class="widget-body">
               <h1>Migrando a Angular 2</h1>
-              <button value="opcion1" class="btn btn-primary">Votar</button>
+              <button value="opcion1" class="btn btn-primary btn-lg">Votar</button>
             </section>
           </div>
         </article>
@@ -41,7 +41,7 @@
             </header>
             <section class="widget-body">
               <h1>Proyectos Personales</h1>
-              <button value="opcion2" class="btn btn-primary">Votar</button>
+              <button value="opcion2" class="btn btn-primary btn-lg">Votar</button>
             </section>
           </div>
         </article>
@@ -54,7 +54,7 @@
             </header>
             <section class="widget-body">
               <h1>Nodebots</h1>
-              <button value="opcion3" class="btn btn-primary">Votar</button>
+              <button value="opcion3" class="btn btn-primary btn-lg">Votar</button>
             </section>
           </div>
         </article>
@@ -63,17 +63,20 @@
     </div>
 
   </div>
-
+  
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/socket.io-client/socket.io.js"></script>
   <script src="/bower_components/modernizer/modernizr.js"></script>
   <script>
     var button = document.querySelectorAll('button');
 
     //var socket = io( 'localhost:3000/capture' );
-    var socket = io.connect(window.location.hostname);
+    var socket = io.connect(window.location.hostname + '/capture');
 
     socket.on( 'connect', function() {
       console.log( 'connected' );
+
+      $('button').removeAttr('disabled');
 
       var data = {
         url: window.location.href,
@@ -94,7 +97,7 @@
           }
           console.log(data);
           socket.emit( 'client-data', data );
-          e.setAttribute('disabled', 'disabled');
+          $('button').attr('disabled', 'disabled');
         });
         socket.emit( 'client-data', data );
       });

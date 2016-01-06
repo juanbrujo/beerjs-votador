@@ -1,57 +1,108 @@
 <!doctype html>
 <html>
-  <head>
-    <title>SocketAlytics</title>
-  </head>
-  <body>
-    <h1>SocketAlytics</h1>
+<head>
+  <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="dashboard/css/style.css" rel="stylesheet" />
+</head>
+<body>
 
-    <button id="btn">Click Me!</button>
+  <div class="navbar-nav navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand">
+          Votador BeerJS
+        </a>
+      </div>
+    </div>
+  </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+  <div class="container">
 
-    <script src="https://cdn.socket.io/socket.io-1.0.4.js"></script>
-    <!--script src="/socket.io/socket.io.js"></script-->
-    <script>
-      localStorage.debug = 'socket.io-client:socket';
+    <div class="row">
 
-      var socket = io( '/clients' );
+      <div class="col-sm-4">
+        <article class="widget">
+          <div class="widget-inner">
+            <header>
+              <h1>Opción 1</h1>
+            </header>
+            <section class="widget-body">
+              <h1>Migrando a Angular 2</h1>
+              <button value="opcion1" class="btn btn-primary btn-lg">Votar</button>
+            </section>
+          </div>
+        </article>
+      </div>
+      <div class="col-sm-4">
+        <article class="widget">
+          <div class="widget-inner">
+            <header>
+              <h1>Opción 2</h1>
+            </header>
+            <section class="widget-body">
+              <h1>Proyectos Personales</h1>
+              <button value="opcion2" class="btn btn-primary btn-lg">Votar</button>
+            </section>
+          </div>
+        </article>
+      </div>
+      <div class="col-sm-4">
+        <article class="widget">
+          <div class="widget-inner">
+            <header>
+              <h1>Opción 3</h1>
+            </header>
+            <section class="widget-body">
+              <h1>Nodebots</h1>
+              <button value="opcion3" class="btn btn-primary btn-lg">Votar</button>
+            </section>
+          </div>
+        </article>
+      </div>
 
-      socket.on('connect', function(){
-        console.log( 'connected' );
-        var data = {
-          page: {
-            url: window.location.href
-          },
-          device: {
-            capabilities: {
-              webgl: Modernizr.webgl,
-              touch: Modernizr.touch,
-              video: Modernizr.video,
-              websocket: Modernizr.websockets
-            }
+    </div>
+
+  </div>
+  
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/socket.io-client/socket.io.js"></script>
+  <script src="/bower_components/modernizer/modernizr.js"></script>
+  <script>
+    var button = document.querySelectorAll('button');
+
+    //var socket = io( 'localhost:3000/capture' );
+    var socket = io.connect(window.location.hostname + '/capture');
+
+    socket.on( 'connect', function() {
+      console.log( 'connected' );
+
+      $('button').removeAttr('disabled');
+
+      var data = {
+        url: window.location.href,
+        opcion1: 0,
+        opcion2: 0,
+        opcion3: 0
+      };
+      
+      [].forEach.call( button, function(e){
+        var voto = e.getAttribute('value');
+          e.addEventListener('click', function(){
+          if(voto === 'opcion1') {
+            data.opcion1 += 1;
+          } else if(voto === 'opcion2') {
+            data.opcion2 += 1;
+          } else if(voto === 'opcion3') {
+            data.opcion3 += 1;
           }
-        };
-
-        console.log( 'emitting data', data );
+          console.log(data);
+          socket.emit( 'client-data', data );
+          $('button').attr('disabled', 'disabled');
+        });
         socket.emit( 'client-data', data );
-
-        socket.on('disconnect', function(){});
       });
 
-      document.getElementById( 'btn' ).addEventListener( 'click', function() {
-        socket.emit('hello', 'world');
-      });
-
-      document.addEventListener( 'mousemove', function( e ) {
-        var data = {
-          mouseX: e.x,
-          mouseY: e.y
-        };
-
-        socket.emit( 'mousemove', data );
-
-      } );
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
