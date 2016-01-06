@@ -2,8 +2,7 @@ body {
   font: 400 0.95em/1 "Proxima Nova", Helvetica,sans-serif;
   font-size: .875em;
   background-color: #f0f0f0;
-
-  padding-top: 90px;
+  padding-top: 70px;
 }
 
 .widget {
@@ -50,15 +49,18 @@ body {
 
 .widget .widget-body {
   color: #666;
-
-  height: 225px
-}
-
-.widget .widget-body {
+  text-align: center;
   padding: 16px;
-  color: #d3d4d4;
   font-family: Helvetica, Arial, sans-serif;
   z-index: 1;
+  min-height: 200px;
+}
+.widget .widget-body h1 {
+  font-size: 2em;
+}
+.widget .widget-body button {
+  position: absolute;
+  bottom: 0;
 }
 
 .widget .widget-inner>footer {
@@ -78,7 +80,7 @@ body {
   text-align: center;
 }
 
-.dash-unit dtitle {
+.dash-unit title {
   font-size: 11px;
   text-transform: uppercase;
   margin: 8px;
@@ -91,4 +93,12 @@ body {
   border-top: 1px solid #151515;
   border-top-style: dashed;
   margin-top: 3px;
+}
+
+#conteoVotos {
+  font-size: 14px;
+  text-align: center;
+}
+h2 {
+  text-align: center;
 }

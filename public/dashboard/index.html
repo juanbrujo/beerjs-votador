@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>SocketAlytics</title>
+    <title></title>
 
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../bower_components/epoch/epoch.0.5.2.min.css" rel="stylesheet" />
@@ -11,103 +11,43 @@
   <body>
 
     <div class="navbar-nav navbar-inverse navbar-fixed-top">
-        <div class="container">
+      <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <a class="navbar-brand" href="flot.html">
-            SocketAlytics Dashboard
+            Votador BeerJS
           </a>
         </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active">
-                <!-- <a href="index.html">
-                  <i class="icon-home icon-white"></i> Home
-                </a> -->
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+      </div>
     </div>
 
     <div class="container">
 
       <div class="row">
 
-        <div class="col-sm-12 col-lg-12">
+        <div class="col-sm-12 col-md-6  col-lg-6">
           <article class="widget">
             <div class="widget-inner">
-
               <header>
-                <h1>Visitors (30D)</h1>
+                <h1>Opciones</h1>
               </header>
-
               <section class="widget-body">
-                <div id="visitors" class="epoch" style="height: 200px;"></div>
+                <div id="votos" class="epoch" style="width: 400px; height: 400px"></div>
+                <p id="conteoVotos"></p>
               </section>
-
-            </div><!-- .widget-inner -->
-
+            </div>
           </article>
         </div>
 
-      </div>
-
-      <div class="row">
-
-        <div class="col-sm-6 col-lg-6">
+        <div class="col-sm-12 col-md-6 col-lg-6">
           <article class="widget">
             <div class="widget-inner">
-
               <header>
-                <h1>Popular Pages</h1>
+                <h1>Cuántos somos</h1>
               </header>
-
               <section class="widget-body">
-                <div id="pages" class="epoch" style="height: 200px;"></div>
+                <div id="visitors" class="epoch" style="height: 400px;"></div>
               </section>
-
-            </div><!-- .widget-inner -->
-
-          </article>
-        </div>
-
-
-        <div class="col-sm-3 col-lg-3">
-          <article class="widget">
-            <div class="widget-inner">
-
-              <header>
-                <h1>Touch Support</h1>
-              </header>
-
-              <section class="widget-body">
-                <div id="touch" class="epoch gauge-medium"></div>
-              </section>
-
-            </div><!-- .widget-inner -->
-
-          </article>
-        </div>
-
-        <div class="col-sm-3 col-lg-3">
-          <article class="widget">
-            <div class="widget-inner">
-
-              <header>
-                <h1>Video Support</h1>
-              </header>
-
-              <section class="widget-body">
-                <div id="video" class="epoch gauge-medium"></div>
-              </section>
-
-            </div><!-- .widget-inner -->
-
+            </div>
           </article>
         </div>
 

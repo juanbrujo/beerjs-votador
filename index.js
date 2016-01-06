@@ -1,5 +1,6 @@
 var express = require( 'express' );
 var app = express();
+
 app.use( express.static( __dirname + '/public') );
 
 var server = require( 'http' ).Server( app );
@@ -8,8 +9,9 @@ var io = require( 'socket.io' )( server );
 // Store data
 var stats = {
   connections: 0,
-  touch: 0,
-  video: 0,
+  opcion1: 0,
+  opcion2: 0,
+  opcion3: 0,
   pages: {}
 };
 
@@ -24,8 +26,9 @@ capture.on( 'connection', function( socket ) {
 
   socket.on( 'client-data', function( data ) {
     socketData[ socket.id ] = data;
-    stats.touch += ( data.touch? 1 : 0 );
-    stats.video += ( data.video? 1 : 0 );
+    stats.opcion1 += ( data.opcion1? 1 : 0 );
+    stats.opcion2 += ( data.opcion2? 1 : 0 );
+    stats.opcion3 += ( data.opcion3? 1 : 0 );
 
     var pageCount = stats.pages[ data.url ] || 0;
     stats.pages[ data.url ] = ++pageCount;
@@ -35,26 +38,25 @@ capture.on( 'connection', function( socket ) {
   } );
 
   socket.on( 'disconnect', function() {
-    // Clear down stats for lost socket
     --stats.connections;
 
-    stats.touch -= ( socketData[ socket.id ].touch? 1 : 0 );
-    stats.video -= ( socketData[ socket.id ].video? 1 : 0 );
+    stats.opcion1 -= ( socketData[ socket.id ].opcion1? 1 : 0 );
+    stats.opcion2 -= ( socketData[ socket.id ].opcion2? 1 : 0 );
+    stats.opcion3 -= ( socketData[ socket.id ].opcion3? 1 : 0 );
     --stats.pages[ socketData[ socket.id ].url ];
     delete socketData[ socket.id ];
 
     console.log( stats );
     dashboard.emit( 'stats-updated', stats );
-  } );
+  });
 
-} );
+});
 
 var dashboard = io.of( '/dashboard' );
 dashboard.on( 'connection', function( socket ) {
-  // Send an update to the newly connected dashboard socket
   socket.emit( 'stats-updated', stats );
-} );
+});
 
 server.listen( 3000, function(){
   console.log( 'listening on *:3000' );
-} );
+});
