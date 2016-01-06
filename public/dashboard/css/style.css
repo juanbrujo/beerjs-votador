@@ -53,7 +53,7 @@ body {
   padding: 16px;
   font-family: Helvetica, Arial, sans-serif;
   z-index: 1;
-  min-height: 200px;
+  min-height: 150px;
   position: relative;
 }
 .widget .widget-body h1 {
@@ -62,6 +62,7 @@ body {
 .widget .widget-body button {
   position: absolute;
   bottom: 1em;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
