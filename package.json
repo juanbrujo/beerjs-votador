@@ -22,11 +22,9 @@
   "homepage": "https://github.com/leggetter/socketalytics",
   "dependencies": {
     "socket.io": "~1.0.4",
-    "express": "~4.4.3",
-    "bower": "0.6.x"
+    "express": "~4.4.3"
   },
   "scripts": {
-    "start": "node index.js",
-    "postinstall": "bower install"
+    "start": "node index.js"
   }
 }
