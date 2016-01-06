@@ -22,8 +22,8 @@ $( function() {
   var pages = $( '#pages' ).epoch( { type: 'bar' } );
   var votos = $( '#votos' ).epoch( { type: 'pie' } );
 
-  var dashboard = io( 'localhost:3000/dashboard' );
-  //var dashboard = io.connect(window.location.hostname);
+  //var dashboard = io( 'localhost:3000/dashboard' );
+  var dashboard = io(window.location.hostname + '/dashboard');
 
   dashboard.on( 'stats-updated', function( update ) {
 
