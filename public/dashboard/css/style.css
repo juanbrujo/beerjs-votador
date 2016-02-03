@@ -63,6 +63,11 @@ body {
   transform: translateX(-50%);
 }
 
+.widget .widget-body button.selected {
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+
 .widget .widget-inner>footer {
   color: #8b8b8b;
   background-color: #f5f5f5;

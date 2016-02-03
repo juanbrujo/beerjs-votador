@@ -1,25 +1,24 @@
 {
-  "name": "socketalytics",
-  "version": "0.0.0",
-  "description": "Example realtime analytics using Socket.IO",
+  "name": "beerjs-votador",
+  "version": "0.0.1",
+  "description": "sistema de votación para elegir temas en cada edición de BeerJS Santiago",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/leggetter/socketalytics"
+    "url": "https://github.com/juanbrujo/beerjs-votador"
   },
   "keywords": [
     "socket.io",
     "analytics"
   ],
-  "author": "Phil Leggetter <phil@leggetter.co.uk> (http://www.leggetter.co.uk)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leggetter/socketalytics/issues"
+    "url": "https://github.com/juanbrujo/beerjs-votador/issues"
   },
-  "homepage": "https://github.com/leggetter/socketalytics",
+  "homepage": "https://github.com/juanbrujo/beerjs-votador",
   "dependencies": {
     "socket.io": "~1.0.4",
     "express": "~4.4.3"

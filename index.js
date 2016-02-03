@@ -33,7 +33,7 @@ capture.on( 'connection', function( socket ) {
 
     console.log( stats );
     dashboard.emit( 'stats-updated', stats );
-  } );
+  });
 
   socket.on( 'disconnect', function() {
     --stats.connections;
