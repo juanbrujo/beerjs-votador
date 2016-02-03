@@ -1,7 +1,19 @@
-# SocketAlytics
+# BeerJS Santiago - Votador
 
-The code for a Real-Time Analytics dashboard powered by Socket.IO.
+Sistema de votación para elegir temas en cada edición de BeerJS Santiago.
 
-## Tutorial
+## Uso
 
-[Build a real-time app with Socket.IO](http://www.creativebloq.com/web-design/build-real-time-app-socketio-11514083).
+Se deployea a Heroku por mientras. En localhost basta con clonar esto y:
+
+```
+$ npm install
+$ node index.js
+```
+
+Apuntar a *localhost:3000* para desplegar y seleccionar una de las 3 opciones y *localhost:3000/dashboard* para visualizar en tiempo real las votaciones y resultados.
+
+### TO-DO
+
+- mejorar diseño
+- mejor validación de voto único por dispositivo / tiempo
