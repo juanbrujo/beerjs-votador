@@ -33,15 +33,16 @@ capture.on( 'connection', function( socket ) {
 
     console.log( stats );
     dashboard.emit( 'stats-updated', stats );
-  });
+  } );
 
   socket.on( 'disconnect', function() {
     --stats.connections;
 
-    stats.opcion1 -= ( socketData[ socket.id ].opcion1? 1 : 0 );
-    stats.opcion2 -= ( socketData[ socket.id ].opcion2? 1 : 0 );
-    stats.opcion3 -= ( socketData[ socket.id ].opcion3? 1 : 0 );
-    --stats.pages[ socketData[ socket.id ].url ];
+    //stats.opcion1 -= ( socketData[ socket.id ].opcion1? 1 : 0 );
+    //stats.opcion2 -= ( socketData[ socket.id ].opcion2? 1 : 0 );
+    //stats.opcion3 -= ( socketData[ socket.id ].opcion3? 1 : 0 );
+    //--stats.pages[ socketData[ socket.id ].url ];
+
     delete socketData[ socket.id ];
 
     console.log( stats );
