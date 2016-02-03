@@ -38,7 +38,7 @@ $( function() {
 
     var conteoVotos = [];
     for (var i = pieData.length >>> 0; i--;) { 
-      conteoVotos[i] = pieData[i].label + ": " + pieData[i].value + " | ";
+      conteoVotos[i] = pieData[i].label + ": <b>" + pieData[i].value + "</b> &bull; ";
     }
     conteo.html( conteoVotos );
 
