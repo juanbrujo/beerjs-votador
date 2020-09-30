@@ -21,7 +21,7 @@
   "homepage": "https://github.com/juanbrujo/beerjs-votador",
   "dependencies": {
     "socket.io": "~1.0.4",
-    "express": "~4.4.3"
+    "express": "~4.17.1"
   },
   "scripts": {
     "start": "node index.js"
